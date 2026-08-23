@@ -54,44 +54,44 @@ compile_test_arraylist: assemble_test_arraylist
 
 assemble_test_arraylist: preprocess_test_arraylist 
 
-    @echo "Building"
+	@echo "Building"
 link: link_arraylist
-    src/mkinstalldirs $(libdir) $(libdir)/ArrayList
+	src/mkinstalldirs $(libdir) $(libdir)/ArrayList
 
 mostlyclean:
-    rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
-    rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-    rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
-    rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
+	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
+	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
+	rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
 
 maintainer-clean:
-    rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
-    rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-    rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
-    rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
+	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
+	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
+	rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
 realclean:
 clobber:
 
 install:
-    $(srcdir)/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
-    $(srcdir)/mkinstalldirs $(libdir)/ArrayList
+	$(srcdir)/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
+	$(srcdir)/mkinstalldirs $(libdir)/ArrayList
 
 #   mkdir $(subdirs)
 #   cp out/libpa.a $(libdir)
 #   cp -r obj/*.o $(libdir)
 #
 installcheck:
-    ls $(foreach subdir,$(subdirs),$(subdir))
+	ls $(foreach subdir,$(subdirs),$(subdir))
 #   ls $(libdir) | grep libpa.a
 #   ls $(libdir) | grep $(objects)/PA
 print:
-    git status
-    ar -T -t $(libdir)/libpa.a
+	git status
+	ar -T -t $(libdir)/libpa.a
 tar:
-    tar cvf palibrary.tar $(srcdir)/PA/
+	tar cvf palibrary.tar $(srcdir)/PA/
 shar:
 dist:
-    tar cvf libpa.tar.gz $(libdir)/libpa.a
+	tar cvf libpa.tar.gz $(libdir)/libpa.a
 check:
 test:
 ifeq ($(host-type), arm64)
@@ -126,27 +126,27 @@ objects_test_arraylist=
 program_test_arraylist= test.out
 
 distclean:
-    rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
-    rm $(foreach source,$(sources_test_arraylist),$(srcdir)/$(source))
+	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
+	rm $(foreach source,$(sources_test_arraylist),$(srcdir)/$(source))
 
-    rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-    rm $(foreach assembly,$(assemblies_test_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach assembly,$(assemblies_test_arraylist),$(srcdir)/$(assembly))
 
-    rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
-    rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
+	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
+	rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
 
-    rm $(foreach program,$(program_test_arraylist),$(bindir)/$(program))
+	rm $(foreach program,$(program_test_arraylist),$(bindir)/$(program))
 
 objdirs= $(libdir)/ \
-    $(libdir)/BFS/ \
-    $(libdir)/ArrayList/ \
-    $(libdir)/PA/
+	$(libdir)/BFS/ \
+	$(libdir)/ArrayList/ \
+	$(libdir)/PA/
 
 
 subdirs= $(libdir)/ \
-    $(libdir)/BFS/ \
-    $(libdir)/ArrayList/ \
-    $(libdir)/PA/
+	$(libdir)/BFS/ \
+	$(libdir)/ArrayList/ \
+	$(libdir)/PA/
 
 ifeq (0,${MAKELEVEL})
 host-type := $(shell arch)
@@ -168,19 +168,19 @@ link_arraylist: $(output_arraylist) $(link_test_arraylist)
 run_pa: $(test_pa)
 
 link_test_arraylist: $(objects_test_arraylist) $(output_arraylist)
-    @echo "Testing"
+	@echo "Testing"
 
 lib: out/$(output)
 build: preprocess compile assemble test
 ${subdirs}:
-    -mkdir $@
+	-mkdir $@
 
 build: $(subdirs)
 
 libpa.a: $(objects_pa)
-    src/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
-    $(AR) -v -s -q $(libdir)/$(output) $(foreach object,$^,$(libdir)/$(object))  
-    $(AR) -v -t -s $(libdir)/$(output)
+	src/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
+	$(AR) -v -s -q $(libdir)/$(output) $(foreach object,$^,$(libdir)/$(object))  
+	$(AR) -v -t -s $(libdir)/$(output)
 
 build: preprocess assemble compile
 
@@ -199,35 +199,35 @@ ArrayList/ArrayList.c: ArrayList/ArrayList.h $(srcdir)/ArrayList/ArrayList.c
 ArrayList/ArrayListPosition.c: ArrayList/ArrayListPosition.h $(srcdir)/ArrayList/ArrayListPosition.c
 
 ArrayList/ArrayList.i: $(srcdir)/ArrayList/ArrayList.c $(includedir)/defs.h $(includedir)/types.h $(includedir)/ArrayList/ArrayList.h
-    $(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
+	$(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
 ArrayList/ArrayListPosition.i : $(srcdir)/ArrayList/ArrayListPosition.c $(includedir)/ArrayList/ArrayList.h $(includedir)/defs.h $(includedir)/types.h
-    $(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
+	$(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
 
 ArrayList/ArrayList.s: ArrayList/ArrayList.i
-    $(CC) -S $(srcdir)/$< -o $(srcdir)/$@
+	$(CC) -S $(srcdir)/$< -o $(srcdir)/$@
 ArrayList/ArrayListPosition.s: ArrayList/ArrayListPosition.i
-    $(CC) -S $(srcdir)/$< -o $(srcdir)/$@
+	$(CC) -S $(srcdir)/$< -o $(srcdir)/$@
 
 test.i: test/test.c
-    $(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
+	$(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
 test.s: test.i
-    $(CC) -S $(srcdir)/$< -o $(srcdir)/$@
+	$(CC) -S $(srcdir)/$< -o $(srcdir)/$@
 
 test.o: test.s
 ifeq ($(host-type),arm64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),x86_64)
-    $(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),AArch64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 
 
 
 test.out: $(objects) test.o test.out libarraylist.a
-    $(CC) $(libdir)/test.o $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist	)
+	$(CC) $(libdir)/test.o $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist	)
 
 ASFLAGS=
 ifeq ($(host-type),arm64)
@@ -242,58 +242,58 @@ endif
 
 ArrayList/ArrayList.o: ArrayList/ArrayList.s
 ifeq ($(host-type),arm64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),x86_64)
-    $(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),AArch64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 
 
 
 ArrayList/ArrayListPosition.o : ArrayList/ArrayListPosition.s
 ifeq ($(host-type),arm64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),x86_64)
-    $(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(CC) -c $(CFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 ifeq ($(host-type),AArch64)
-    $(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
+	$(AS) $(ASFLAGS) $(srcdir)/$< -o $(libdir)/$@
 endif
 
 installdirs: mkinstalldirs
-    $(srcdir)/mkinstalldirs $(DESTDIR)$(bindir) $(DESTDIR)$(datadir) \
-                $(DESTDIR)$(libdir) $(DESTDIR)$(infodir) \
-                $(DESTDIR)$(mandir) \
-                $(DESTDIR)$(subdirs) \
-                $(DESTDIR)$(objdirs)
+	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir) $(DESTDIR)$(datadir) \
+	$(DESTDIR)$(libdir) $(DESTDIR)$(infodir) \
+	$(DESTDIR)$(mandir) \
+	$(DESTDIR)$(subdirs) \
+	$(DESTDIR)$(objdirs)
 
 mkinstalldirs: $(srcdir)/mkinstalldirs
 
 $(output_dir)/$(lib_arraylist):
 ifeq ($(host-type),arm64)
-    $(AR) -r $@ $(objects_arraylist)
+	$(AR) -r $@ $(objects_arraylist)
 endif
 
 clean:
-    rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
-    rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
+	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
+	rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
 
-    rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-    rm $(foreach test,$(assemblies_test_arraylist),$(srcdir)/$(test))
+	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach test,$(assemblies_test_arraylist),$(srcdir)/$(test))
 #   rm $(foreach assembly,$(assemblies_bfs),$(srcdir)/$(assebmbly))
 #   rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-    rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
-    rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
+	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
+	rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
 
 arraylist: 
 # ${designs_arraylist} ${sources_arraylist} ${assemblies_arraylist} ${objects_arraylist} $(output_arraylist)
 
 run:
-    @echo "Running"
+	@echo "Running"
 
 .PHONY: all install installcheck test
 

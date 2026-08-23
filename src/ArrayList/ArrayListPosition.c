@@ -34,13 +34,13 @@ struct ArrayListPosition ArrayListPositionPerformCopy(struct ArrayListPosition L
 	copy = ArrayListPositionPerformInit(ListPosition);
 	return copy;
 }
-PAResult ArrayListPositionPerformDelete(struct ArrayListPosition Position)
+HRESULT ArrayListPositionPerformDelete(struct ArrayListPosition Position)
 {
-	PAResult result = { PARESULT_SUCCESS };
+	HRESULT result = { HRESULT_SUCCESS };
 	return result;
 }
-PAResult ArrayListPositionPerformRuin(struct ArrayListPosition Position)
+HRESULT ArrayListPositionPerformRuin(struct ArrayListPosition Position)
 {
-	PAResult result = { PARESULT_SUCCESS };
+	HRESULT result = { HRESULT_SUCCESS };
 	return result;
 }

@@ -3,8 +3,8 @@
 // #include <types.h>
 
 #define PADataDefault { {} , {} }
-#define PARESULT_SUCCESS ((int)0)
-#define PARESULT_FAIL ((int)1)
+#define HRESULT_SUCCESS ((int)0)
+#define HRESULT_FAIL ((int)1)
 #define TRUE 1
 #define FALSE 0
 #define NULL 0
@@ -12,12 +12,13 @@
 #ifndef _WIN95
 // typedef 
 #define DllExport
-#define HRESULT PAResult
+#define HRESULT int
+
 #elif defined _WIN95
 typedef uint32_t ListObject;
 typedef uint32_t ListPosition;
 #define DllExport   __declspec( dllexport )
-#define HRESULT HRESULT
+#define HRESULT int
 #endif
 #ifndef _WIN95
 // typedef void* Objects;

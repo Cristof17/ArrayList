@@ -2,36 +2,17 @@
 #include <types.h>
 
 #ifndef _WIN95
-//#include <PA/Result.h>
-//#include <PA/Data.h>
  #include <ArrayList/ArrayList.h>
 // #eliuf
 #elif defined _WIN95
 #include <ArrayList\ArrayList.h>
-//#include <PA\Result.h>
-//#include <PA\Data.h>
 #endif
-// #include <PA/Result.h>
-// #include <defs.h>
 /*
  * ArrayList.c
  *
  *  Created on: 20 nov. 2025
  *      Author: AdministratorUser
  */
-// struct ArrayList ArrayListPerformConstruct()
-// {
-// 	struct ArrayList List;
-// 	return List;
-// }
-// struct ArrayList ArrayListPerformInit(struct PAData Data[], struct PACount M)
-// {
-// 	struct ArrayList List;
-// 	List = ArrayListPerformConstruct();
-// 	List.count = M;
-// 	List.index = Data;
-// 	return List;
-// }
 
 struct ArrayList ArrayListPerformCopy(struct ArrayList List)
 {
@@ -49,7 +30,7 @@ struct ArrayList ArrayListPerformCopy(struct ArrayList List)
 	return list;
 }
 
-PAResult ArrayListPerformCopyTo(struct ArrayList Array, struct PAList List, struct PAElement Element) {
+// HRESULT ArrayListPerformCopyTo(struct ArrayList Array, struct PAList List, struct PAElement Element) {
 	// PAResult result = PARESULT_SUCCESS;
 	// struct ArrayListPosition total;
 	// struct PACount count;
@@ -74,8 +55,8 @@ PAResult ArrayListPerformCopyTo(struct ArrayList Array, struct PAList List, stru
 	// }
 	// if (result == PARESULT_FAIL)
 	// 	return result;
-	return PARESULT_SUCCESS;
-}
+	// return PARESULT_SUCCESS;
+// }
 // struct PAData ArrayListGet(struct PAData[],PAInt);
 // struct PARecord ArrayListPerformArrange(PAInt)
 // {
@@ -149,31 +130,31 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 	// ArrayListObject
 	return Object;
 }
-PAResult ArrayListPerformAdapt(struct ArrayList List)
-{
-	PAResult result = { PARESULT_SUCCESS };
-	return result;
-}
-PAResult ArrayListPerformMove(struct ArrayList List)
-{
-	PAResult result = { PARESULT_SUCCESS };
-	return result;
-	//start, first position for i is 1
-	//while not end of line
-	//move to the right all elements and then realloc array with the new size for the next addFirst, or AddLast
-	//element[i+1] = element[iu];
-	//element[i] = element[i-1];
-	//if i == 1
-	//element[i-1] = new_element
-	//This is kinda reverse for add directly
-	//you add by first moving all elements and the inserting the new element on position 0
-	//this is elementary programming from highschool
-	//buit it workds`
-	//this is not business nor logical 
-	//this is not math
-	//this should be done usnng diagrams and helper functions
-	//#noiu #sa #fim #sanatosi
-}
+// PAResult ArrayListPerformAdapt(struct ArrayList List)
+// {
+// 	PAResult result = { PARESULT_SUCCESS };
+// 	return result;
+// }
+// PAResult ArrayListPerformMove(struct ArrayList List)
+// {
+// 	PAResult result = { PARESULT_SUCCESS };
+// 	return result;
+// 	//start, first position for i is 1
+// 	//while not end of line
+// 	//move to the right all elements and then realloc array with the new size for the next addFirst, or AddLast
+// 	//element[i+1] = element[iu];
+// 	//element[i] = element[i-1];
+// 	//if i == 1
+// 	//element[i-1] = new_element
+// 	//This is kinda reverse for add directly
+// 	//you add by first moving all elements and the inserting the new element on position 0
+// 	//this is elementary programming from highschool
+// 	//buit it workds`
+// 	//this is not business nor logical 
+// 	//this is not math
+// 	//this should be done usnng diagrams and helper functions
+// 	//#noiu #sa #fim #sanatosi
+// }
 // ArrayListObject ArrayListPerformPutLast(struct ArrayList List)
 // {
 
@@ -183,9 +164,9 @@ struct ArrayList ArrayListPerformConstruct(ArrayListObject Data[], struct ArrayL
 	struct ArrayList list;
 	return list;
 }
-PAResult ArrayListPerformInit(struct ArrayList List)
+HRESULT ArrayListPerformInit(struct ArrayList List)
 {
-	PAResult result = { PARESULT_SUCCESS };
+	HRESULT result = { HRESULT_SUCCESS };
 	return result;
 	// srt
 	//struct ArrayList list;
@@ -214,14 +195,14 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 
 }
-PAResult ArrayListPerformRuin(struct ArrayListPosition place, ArrayListObject objects[])
+HRESULT ArrayListPerformRuin(struct ArrayListPosition place, ArrayListObject objects[])
 {
-	PAResult result = { PARESULT_SUCCESS } ;
+	HRESULT result = { HRESULT_SUCCESS } ;
 	return result;
 }
-PAResult ArrayListPerformDelete(struct ArrayList List)
+HRESULT ArrayListPerformDelete(struct ArrayList List)
 {
-	PAResult result = { PARESULT_SUCCESS };
+	HRESULT result = { HRESULT_SUCCESS };
 	return result;
 }
 // struct PAData ArrayListPerformGet(struct PAIndex Array[],PAInt Position) {
