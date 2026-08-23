@@ -42,8 +42,10 @@ manext=.1
 man1ext=
 man2ext=
 srcdir=
-output=libarraylist.a
-all: preprocess assemble compile test.out test
+
+lib_arraylist= libarraylist.a
+output=$(lib_arraylist)
+all: preprocess assemble compile $(output) test.out test
 preprocess: preprocess_arraylist 
 compile: compile_arraylist 
 assemble: assemble_arraylist 
@@ -114,24 +116,21 @@ designs_arraylist= ArrayList/ArrayList.c \
 assemblies_arraylist= ArrayList/ArrayListPosition.s \
     ArrayList/ArrayList.s
 
-sources_test_arraylist=
+sources_test_arraylist=test.i
 
-assemblies_test_arraylist =
+assemblies_test_arraylist=test.s
 
-objects_test_arraylist= 
+objects_test_arraylist=test.o
 
-program_test_arraylist= test.out
+program_test_arraylist=test.out
 
 distclean:
 	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
 	rm $(foreach source,$(sources_test_arraylist),$(srcdir)/$(source))
-
 	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
 	rm $(foreach assembly,$(assemblies_test_arraylist),$(srcdir)/$(assembly))
-
 	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
 	rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
-
 	rm $(foreach program,$(program_test_arraylist),$(bindir)/$(program))
 
 objdirs= $(libdir)/ \
@@ -145,7 +144,6 @@ ifeq (0,${MAKELEVEL})
 host-type := $(shell arch)
 endif
 
-lib_arraylist= libarraylist.a
 
 output_dir= out
 output_arraylist= $(output_dir)/$(lib_arraylist)
@@ -158,22 +156,17 @@ preprocess_arraylist: $(sources_arraylist) $(sources_test_arraylist)
 
 link_arraylist: $(output_arraylist) $(link_test_arraylist)
 
-run_pa: $(test_pa)
-
 link_test_arraylist: $(objects_test_arraylist) $(output_arraylist)
 	@echo "Testing"
 
-lib: out/$(output)
 build: preprocess compile assemble test
 ${subdirs}:
 	-mkdir $@
 
 build: $(subdirs)
 
-libpa.a: $(objects_pa)
-	src/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
-	$(AR) -v -s -q $(libdir)/$(output) $(foreach object,$^,$(libdir)/$(object))  
-	$(AR) -v -t -s $(libdir)/$(output)
+$(lib_arraylist): $(objects_arraylist)
+	$(AR) -v -s -q $(libdir)/$@ $(foreach object,$^,$(libdir)/$(object))  
 
 build: preprocess assemble compile
 
@@ -219,8 +212,8 @@ endif
 
 
 
-test.out: $(objects) test.o $(libarraylist)
-	$(CC) $(libdir)/test.o $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist)
+$(program_test_arraylist): $(objects_arraylist) $(objects_test_arraylist) $(libarraylist)
+	$(CC) $(libdir)/$(objects_test_arraylist) $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist)
 
 ASFLAGS=
 ifeq ($(host-type),arm64)
@@ -266,21 +259,17 @@ installdirs: mkinstalldirs
 
 mkinstalldirs: $(srcdir)/mkinstalldirs
 
-$(output_dir)/$(lib_arraylist):
-ifeq ($(host-type),arm64)
-	$(AR) -r $@ $(objects_arraylist)
-endif
-
 clean:
 	rm $(foreach source,$(sources_arraylist),$(srcdir)/$(source))
-	rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
-
 	rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
+	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
+	rm $(foreach lib,$(lib_arraylist),$(libdir)/$(lib))
+	rm $(foreach test,$(sources_test_arraylist),$(srcdir)/$(test))
 	rm $(foreach test,$(assemblies_test_arraylist),$(srcdir)/$(test))
 #   rm $(foreach assembly,$(assemblies_bfs),$(srcdir)/$(assebmbly))
 #   rm $(foreach assembly,$(assemblies_arraylist),$(srcdir)/$(assembly))
-	rm $(foreach object,$(objects_arraylist),$(libdir)/$(object))
-	rm $(foreach object,$(objects_test_arraylist),$(libdir)/$(object))
+	rm $(foreach test,$(objects_test_arraylist),$(libdir)/$(test))
+#	rm $(foreach test,$(program_test_arraylist),$(bindir)/$(program))
 
 arraylist: 
 # ${designs_arraylist} ${sources_arraylist} ${assemblies_arraylist} ${objects_arraylist} $(output_arraylist)
