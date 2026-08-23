@@ -198,10 +198,10 @@ ArrayList/ArrayListPosition.h: $(includedir)/ArrayList/ArrayListPosition.h
 ArrayList/ArrayList.c: ArrayList/ArrayList.h $(srcdir)/ArrayList/ArrayList.c
 ArrayList/ArrayListPosition.c: ArrayList/ArrayListPosition.h $(srcdir)/ArrayList/ArrayListPosition.c
 
-ArrayList/ArrayList.i: $(srcdir)/ArrayList/ArrayList.c $(includedir)/defs.h $(includedir)/types.h $(includedir)/ArrayList/ArrayList.h
-	$(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
-ArrayList/ArrayListPosition.i : $(srcdir)/ArrayList/ArrayListPosition.c $(includedir)/ArrayList/ArrayList.h $(includedir)/defs.h $(includedir)/types.h
-	$(CPP) $(CPPFLAGS) -E $< > $(srcdir)/$@
+ArrayList/ArrayList.i: ArrayList/ArrayList.c defs.h types.h ArrayList/ArrayList.h
+	$(CPP) $(CPPFLAGS) -E $(srcdir)/$< > $(srcdir)/$@
+ArrayList/ArrayListPosition.i : ArrayList/ArrayListPosition.c ArrayList/ArrayList.h defs.h types.h
+	$(CPP) $(CPPFLAGS) -E $(srcdir)/$< > $(srcdir)/$@
 
 ArrayList/ArrayList.s: ArrayList/ArrayList.i
 	$(CC) -S $(srcdir)/$< -o $(srcdir)/$@
