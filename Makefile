@@ -105,7 +105,6 @@ endif
 objects_arraylist= ArrayList/ArrayList.o \
     ArrayList/ArrayListPosition.o
 
-
 sources_arraylist= ArrayList/ArrayList.i \
     ArrayList/ArrayListPosition.i
 
@@ -114,8 +113,6 @@ designs_arraylist= ArrayList/ArrayList.c \
 
 assemblies_arraylist= ArrayList/ArrayListPosition.s \
     ArrayList/ArrayList.s
-
-
 
 sources_test_arraylist=
 
@@ -138,15 +135,11 @@ distclean:
 	rm $(foreach program,$(program_test_arraylist),$(bindir)/$(program))
 
 objdirs= $(libdir)/ \
-	$(libdir)/BFS/ \
 	$(libdir)/ArrayList/ \
-	$(libdir)/PA/
 
 
 subdirs= $(libdir)/ \
-	$(libdir)/BFS/ \
 	$(libdir)/ArrayList/ \
-	$(libdir)/PA/
 
 ifeq (0,${MAKELEVEL})
 host-type := $(shell arch)
