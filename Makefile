@@ -219,8 +219,8 @@ endif
 
 
 
-test.out: $(objects) test.o test.out libarraylist.a
-	$(CC) $(libdir)/test.o $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist	)
+test.out: $(objects) test.o $(libarraylist)
+	$(CC) $(libdir)/test.o $(foreach object,$(objects_arraylist),$(libdir)/$(object)) -o $(bindir)/$(program_test_arraylist)
 
 ASFLAGS=
 ifeq ($(host-type),arm64)
