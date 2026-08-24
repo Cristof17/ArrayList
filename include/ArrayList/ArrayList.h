@@ -25,7 +25,7 @@ DllExport int ArrayListPerformGetFirst(struct ArrayList);
 DllExport int ArrayListPerformGetLast(struct ArrayList);
 DllExport int ArrayListPerformPutFirst(struct ArrayList, int);
 DllExport int ArrayListPerformPutLast(struct ArrayList, int);
-DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList);
+DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
 DllExport ArrayListSize ArrayListPerformSize();
 DllExport HRESULT ArrayListPerformRuin(struct ArrayList Array);
 DllExport HRESULT ArrayListPerformDelete(struct ArrayList Array);

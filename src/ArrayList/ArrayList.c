@@ -14,7 +14,7 @@
  *      Author: AdministratorUser
  */
 
-struct ArrayList ArrayListPerformCopy(struct ArrayList List)
+struct ArrayList ArrayListPerformCopy(struct ArrayList List, struct ArrayList Copy)
 {
 	struct ArrayList list;
 	return list;
