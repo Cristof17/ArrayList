@@ -11,7 +11,7 @@
  * ArrayList.c
  *
  *  Created on: 20 nov. 2025
- *      Author: AdministratorUser
+ *      Author: cristoforrotsching
  */
 
 struct ArrayList ArrayListPerformCopy(struct ArrayList List, struct ArrayList Copy)
