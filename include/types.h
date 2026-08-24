@@ -19,7 +19,8 @@ struct ArrayListPosition {
 struct ArrayList {
     // struct Position position;
     struct ArrayListPosition place;
-    int objects[SIZE];
+    int count;
+    int elements[SIZE];
 };
 
 #endif

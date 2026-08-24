@@ -19,16 +19,16 @@
 // struct PARecord ArrayListPutCount(struct ArrayList, struct PACount);
 // sjt
 // struct A
-DllExport struct ArrayList ArrayListPerformConstruct(int Data[], struct ArrayListPosition);
-DllExport HRESULT ArrayListPerformInit(struct ArrayList);
+DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count);
+DllExport struct ArrayList ArrayListPerformInit(struct ArrayList, int Value, int Count);
 DllExport int ArrayListPerformGetFirst(struct ArrayList);
 DllExport int ArrayListPerformGetLast(struct ArrayList);
 DllExport int ArrayListPerformPutFirst(struct ArrayList, int);
 DllExport int ArrayListPerformPutLast(struct ArrayList, int);
 DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList);
 DllExport ArrayListSize ArrayListPerformSize();
-DllExport HRESULT ArrayListPerformRuin(struct ArrayListPosition, int[]);
-DllExport HRESULT ArrayListPerformDelete(struct ArrayList);
+DllExport HRESULT ArrayListPerformRuin(struct ArrayList Array);
+DllExport HRESULT ArrayListPerformDelete(struct ArrayList Array);
 // struct PAData
 // struct PAData ArrayList
 #endif

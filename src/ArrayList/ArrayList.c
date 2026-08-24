@@ -159,27 +159,49 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 // {
 
 // }
-struct ArrayList ArrayListPerformConstruct(ArrayListObject Data[], struct ArrayListPosition M)
+DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count)
 {
-	struct ArrayList list;
-	return list;
+	int i = 1;
+	Array.count = Count;
+	while (i <= Count)
+	{
+		Array.elements[i] = Data[i];
+		i++;
+	}
+	return Array;
 }
-HRESULT ArrayListPerformInit(struct ArrayList List)
+DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, int Value, int Count)
 {
-	HRESULT result = { HRESULT_SUCCESS };
-	return result;
-	// srt
-	//struct ArrayList list;
-	//list = ArrayListPerformConstruct(List.objects,List.place);
-//	//List.place = PADataPerformCopy(Data);
-	//use a design pattern
-	//return list;
+	int i = 1;
+	Array.count = Count;
+	while (i <= Count)
+	{
+		Array.elements[i] = Value;
+		i++;
+	}
+	return Array;
 }
-//	PAResult ArrayListPerformCopy()
-//	{
-//		PAResult result;
-//		return result;
-//	//	struct ArrayList Lost;
+// struct ArrayList ArrayListPerformConstruct(ArrayListObject Data[], struct ArrayListPosition M)
+// {
+// 	struct ArrayList list;
+// 	return list;
+// }
+// HRESULT ArrayListPerformInit(struct ArrayList List)
+// {
+// 	HRESULT result = { HRESULT_SUCCESS };
+// 	return result;
+// 	// srt
+// 	//struct ArrayList list;
+// 	//list = ArrayListPerformConstruct(List.objects,List.place);
+// //	//List.place = PADataPerformCopy(Data);
+// 	//use a design pattern
+// 	//return list;
+// }
+// //	PAResult ArrayListPerformCopy()
+// //	{
+// //		PAResult result;
+// //		return result;
+// //	//	struct ArrayList Lost;
 //		//struct ArrayList copy;
 //		//copy = ArrayListPerformConstruct(List.objects,List.place);
 //		//copy = ArrayListPerformInit(List);
