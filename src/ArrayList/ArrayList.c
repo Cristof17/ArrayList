@@ -87,12 +87,12 @@ struct ArrayList ArrayListPerformCopy(struct ArrayList List)
 ArrayListObject ArrayListPerformGetFirst(struct ArrayList List)
 {
 	ArrayListObject first;
-	first = List.objects[FIRST];
+	first = List.elements[FIRST];
 	return first;
 }
 ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
 {
-	return List.objects[LAST(List.place.position)];
+	// return List.objects[LAST(List.place.position)];
 }
 	// struct PAData last;
 	// ArrayListObject last;
@@ -161,7 +161,7 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 // }
 DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count)
 {
-	int i = 1;
+	int i = FIRST;
 	Array.count = Count;
 	while (i <= Count)
 	{
@@ -172,7 +172,7 @@ DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int
 }
 DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, int Value, int Count)
 {
-	int i = 1;
+	int i = FIRST;
 	Array.count = Count;
 	while (i <= Count)
 	{
