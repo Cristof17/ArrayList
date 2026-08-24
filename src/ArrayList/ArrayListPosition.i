@@ -1,3 +1,0 @@
-
-
-./src/ArrayList/ArrayListPosition.c

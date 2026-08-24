@@ -220,7 +220,7 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 HRESULT ArrayListPerformRuin(struct ArrayList List)
 {
 	HRESULT result;
-	int i = 1;
+	int i = FIRST;
 	while (i <= List.count)
 	{
 		List.elements[i] = 0;
@@ -232,7 +232,7 @@ HRESULT ArrayListPerformRuin(struct ArrayList List)
 HRESULT ArrayListPerformDelete(struct ArrayList List)
 {
 	HRESULT result;
-	int i = 1;
+	int i = FIRST;
 	while (i <= List.count)
 	{
 		List.elements[i] = 0;
