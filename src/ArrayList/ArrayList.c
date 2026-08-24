@@ -217,14 +217,28 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 
 }
-HRESULT ArrayListPerformRuin(struct ArrayListPosition place, ArrayListObject objects[])
+HRESULT ArrayListPerformRuin(struct ArrayList List)
 {
-	HRESULT result = { HRESULT_SUCCESS } ;
+	HRESULT result;
+	int i = 1;
+	while (i <= List.count)
+	{
+		List.elements[i] = 0;
+		i++;
+	}
+	result = HRESULT_SUCCESS;
 	return result;
 }
 HRESULT ArrayListPerformDelete(struct ArrayList List)
 {
-	HRESULT result = { HRESULT_SUCCESS };
+	HRESULT result;
+	int i = 1;
+	while (i <= List.count)
+	{
+		List.elements[i] = 0;
+		i++;
+	}
+	result = HRESULT_SUCCESS;
 	return result;
 }
 // struct PAData ArrayListPerformGet(struct PAIndex Array[],PAInt Position) {
