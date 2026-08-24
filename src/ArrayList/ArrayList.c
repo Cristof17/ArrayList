@@ -226,6 +226,8 @@ HRESULT ArrayListPerformRuin(struct ArrayList List)
 		List.elements[i] = 0;
 		i++;
 	}
+	List.count = 0;
+	// List.elements=
 	result = HRESULT_SUCCESS;
 	return result;
 }
