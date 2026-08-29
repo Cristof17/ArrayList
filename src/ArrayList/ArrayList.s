@@ -120,9 +120,9 @@ LBB4_3:
 	ret
 	.cfi_endproc
                                         ; -- End function
-	.globl	_ArrayListRemoveLeft            ; -- Begin function ArrayListRemoveLeft
+	.globl	_ArrayListRemoveFirst           ; -- Begin function ArrayListRemoveFirst
 	.p2align	2
-_ArrayListRemoveLeft:                   ; @ArrayListRemoveLeft
+_ArrayListRemoveFirst:                  ; @ArrayListRemoveFirst
 	.cfi_startproc
 ; %bb.0:
 	sub	sp, sp, #48

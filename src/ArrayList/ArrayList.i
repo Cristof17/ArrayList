@@ -75,7 +75,7 @@ ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListObject 
  List.count++;
  return first;
 }
-ArrayListObject ArrayListRemoveLeft(struct ArrayList List)
+ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
 {
  ArrayListObject first;
  List.elements[(1)] = 0;

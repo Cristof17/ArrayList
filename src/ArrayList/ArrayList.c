@@ -43,7 +43,7 @@ ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListObject 
 	List.count++;
 	return first;
 }
-ArrayListObject ArrayListRemoveLeft(struct ArrayList List)
+ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
 {
 	ArrayListObject first;
 	List.elements[FIRST] = 0;
@@ -58,6 +58,14 @@ ArrayListObject ArrayListRemoveLeft(struct ArrayList List)
 	// 	i++;
 	// }
 	// List.count--;
+}
+ArrayListObject ArrayListRemoveLast(struct ArrayList List)
+{
+	ArrayListObject last;
+	List.elements[List.count] = 0;
+	List.count--;
+	last = List.elements[List.count];
+	return last;
 }
 ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 {
