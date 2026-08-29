@@ -33,7 +33,51 @@ ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
 }
 ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListObject Object)
 {
-	return Object;
+	ArrayListObject last;
+	last = List.count;
+	ArrayListMoveElementsRight(List);
+	List.elements[FIRST] = Object;
+	// Array
+	ArrayListObject first;
+	first = List.elements[FIRST];
+	List.count++;
+	return first;
+}
+ArrayListObject ArrayListRemoveLeft(struct ArrayList List)
+{
+	ArrayListObject first;
+	List.elements[FIRST] = 0;
+	ArrayListMoveElementsLeft(List);
+	List.count--;
+	first = List.elements[FIRST];
+	return first;
+	// int i = FIRST;
+	// while (i <= List.count)
+	// {
+	// 	List.elements[i] = List.elements[i + 1];
+	// 	i++;
+	// }
+	// List.count--;
+}
+ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
+{
+	int i = FIRST;
+	while (i <= List.count)
+	{
+		List.elements[i] = List.elements[i + 1];
+		i++;
+	}
+	return List.elements[FIRST];
+}
+ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
+{
+	int i = List.count;
+	while (i >= FIRST)
+	{
+		List.elements[i + 1] = List.elements[i];
+		i--;
+	}
+	return List.elements[FIRST];
 }
 ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject Object)
 {
