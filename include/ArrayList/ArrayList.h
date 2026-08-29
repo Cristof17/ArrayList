@@ -1,3 +1,4 @@
+/* ArrayList.h @author cristoforrotsching */
 #ifndef INCLUDE_ARRAYLIST_ARRAYLIST_H_
 #define INCLUDE_ARRAYLIST_ARRAYLIST_H_	1
 
