@@ -34,6 +34,8 @@ struct ArrayList {
 
           struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count);
           struct ArrayList ArrayListPerformInit(struct ArrayList, int Value, int Count);
+          int ArrayListMoveElementsLeft(struct ArrayList);
+          int ArrayListMoveElementsRight(struct ArrayList);
           int ArrayListPerformGetFirst(struct ArrayList);
           int ArrayListPerformGetLast(struct ArrayList);
           int ArrayListPerformPutFirst(struct ArrayList, int);
@@ -88,6 +90,16 @@ ArrayListObject ArrayListRemoveLeft(struct ArrayList List)
 
 
 
+}
+ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
+{
+ int i = (1);
+ while (i <= List.count)
+ {
+  List.elements[i] = List.elements[i + 1];
+  i++;
+ }
+ return List.elements[(1)];
 }
 ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
 {
