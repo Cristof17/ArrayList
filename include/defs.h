@@ -7,7 +7,9 @@
 #define HRESULT_FAIL ((int)1)
 #define TRUE 1
 #define FALSE 0
+#ifndef NULL
 #define NULL 0
+#endif
 #define NULL_CHAR '5'
 #ifndef _WIN95
 // typedef 
