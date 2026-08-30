@@ -1,6 +1,6 @@
 #include <defs.h>
 #include <types.h>
-
+// #include <stdio.h>
 #ifndef _WIN95
  #include <ArrayList/ArrayList.h>
 // #eliuf
@@ -70,9 +70,11 @@ ArrayListObject ArrayListRemoveLast(struct ArrayList List)
 ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 {
 	int i = FIRST;
+	int aux;
 	while (i <= List.count)
 	{
-		List.elements[i] = List.elements[i + 1];
+		aux = List.elements[i + 1];
+		List.elements[i] = aux;
 		i++;
 	}
 	return List.elements[FIRST];
@@ -80,9 +82,11 @@ ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
 {
 	int i = List.count;
+	int aux;
 	while (i >= FIRST)
 	{
-		List.elements[i + 1] = List.elements[i];
+		aux = List.elements[i];
+		List.elements[i + 1] = aux;
 		i--;
 	}
 	return List.elements[FIRST];
@@ -92,24 +96,30 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 	// ArrayListObject
 	return Object;
 }
-DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count)
+DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count)
 {
 	int i = FIRST;
+	int aux;
 	Array.count = Count;
 	while (i <= Count)
 	{
-		Array.elements[i] = Data[i];
+		aux = Data[i-1];
+		Array.elements[i] = aux;
 		i++;
 	}
 	return Array;
 }
-DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, int Value, int Count)
+DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
 {
-	int i = FIRST;
-	Array.count = Count;
+	ArrayListPosition i = FIRST;
+
+	int aux = Value;
+	int position;
+	// Array.count = Count;
 	while (i <= Count)
 	{
-		Array.elements[i] = Value;
+		position = i-1;
+		Array.elements[position] = aux;
 		i++;
 	}
 	return Array;
@@ -119,6 +129,18 @@ ArrayListObject ArrayListGet(struct ArrayListPosition Position)
 	ArrayListObject object;
 	return object;
 }
+// HRESULT ArrayListPerformPrint(struct ArrayList List)
+// {
+// 	HRESULT result;
+// 	int i = FIRST;
+// 	while (i <= List.count)
+// 	{
+// 		printf("Element %d: %d\n", i, List.elements[i]);
+// 		i++;
+// 	}
+// 	result = HRESULT_SUCCESS;
+// 	return result;
+// }
 void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 

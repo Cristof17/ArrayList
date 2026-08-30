@@ -174,6 +174,15 @@ srcdir=$(prefix)/src
 
 CPPFLAGS=
 CPPFLAGS+=-I$(prefix)/include -I$(prefix)
+ifeq ($(host-type),arm64)
+CPPFLAGS+=-D_64BIT
+endif
+ifeq ($(host-type),Aarch64)
+CPPFLAGS+=-D_64BIT
+endif
+ifeq ($(host-type),x86_64)
+CPPFLAGS+=-D_64BIT
+endif
 
 defs.h: $(includedir)/defs.h
 types.h: $(includedir)/types.h

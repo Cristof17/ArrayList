@@ -578,30 +578,52 @@ extern int __vsprintf_chk (char * restrict , int, size_t,
 # 1 "./include/types.h" 1
 # 12 "./include/types.h"
 typedef int ArrayListSize;
-typedef int ArrayListObject;
-typedef int ArrayListPosition;
+
+typedef long ArrayListObject;
+
+
+
+
+typedef long ArrayListPosition;
+
+
+
+
+typedef long ArrayListCount;
+
+
+
+
+typedef long ArrayListValue;
+
+
+
+
 
 struct ArrayListPosition {
-    int position;
+#pragma pack(push, 8)
+#pragma pack(pop)
+    ArrayListPosition position;
 };
 struct ArrayList {
 
-    struct ArrayListPosition place;
-    int count;
-    int elements[2];
+    ArrayListPosition place;
+    ArrayListCount count;
+
+    ArrayListObject elements[4];
 };
 # 7 "./include/ArrayList/ArrayList.h" 2
 
-          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, int Data[], int Count);
-          struct ArrayList ArrayListPerformInit(struct ArrayList, int Value, int Count);
-          int ArrayListMoveElementsLeft(struct ArrayList);
-          int ArrayListMoveElementsRight(struct ArrayList);
-          int ArrayListPerformGetFirst(struct ArrayList);
-          int ArrayListPerformGetLast(struct ArrayList);
-          int ArrayListPerformPutFirst(struct ArrayList, int);
-          int ArrayListPerformPutLast(struct ArrayList, int);
-          int ArrayListRemoveFirst(struct ArrayList);
-          int ArrayListRemoveLast(struct ArrayList);
+          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count);
+          struct ArrayList ArrayListPerformInit(struct ArrayList, ArrayListValue Value, ArrayListCount Count);
+          ArrayListObject ArrayListMoveElementsLeft(struct ArrayList);
+          ArrayListObject ArrayListMoveElementsRight(struct ArrayList);
+          ArrayListObject ArrayListPerformGetFirst(struct ArrayList);
+          ArrayListObject ArrayListPerformGetLast(struct ArrayList);
+          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListObject);
+          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListObject);
+          ArrayListObject ArrayListRemoveFirst(struct ArrayList);
+          ArrayListObject ArrayListRemoveLast(struct ArrayList);
           struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
           ArrayListSize ArrayListPerformSize();
           int ArrayListPerformRuin(struct ArrayList Array);
@@ -611,7 +633,26 @@ struct ArrayList {
 int main()
 {
  struct ArrayList List;
- List = ArrayListPerformConstruct(List, (int[]){ 1, 2, 3, 4, 5 }, 5);
- printf("List count: %d\n", List.count);
+ List = ArrayListPerformConstruct(List, (int[]){ 1, 2 }, 2);
+
+ int i = (1);
+ while (i <= List.count){
+
+  printf("%ld\n", List.elements[i]);
+
+
+
+  i++;
+ }
+ List = ArrayListPerformInit(List, 5, 4);
+ i = (1);
+ while (i <= List.count){
+
+  printf("%ld\n", List.elements[i]);
+
+
+
+  i++;
+ }
  return 0;
 }

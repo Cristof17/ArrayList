@@ -13,17 +13,39 @@
 # 1 "./include/types.h" 1
 # 12 "./include/types.h"
 typedef int ArrayListSize;
-typedef int ArrayListObject;
-typedef int ArrayListPosition;
+
+typedef long ArrayListObject;
+
+
+
+
+typedef long ArrayListPosition;
+
+
+
+
+typedef long ArrayListCount;
+
+
+
+
+typedef long ArrayListValue;
+
+
+
+
 
 struct ArrayListPosition {
-    int position;
+#pragma pack(push, 8)
+#pragma pack(pop)
+    ArrayListPosition position;
 };
 struct ArrayList {
 
-    struct ArrayListPosition place;
-    int count;
-    int elements[2];
+    ArrayListPosition place;
+    ArrayListCount count;
+
+    ArrayListObject elements[4];
 };
 # 13 "./include/ArrayList/ArrayListPosition.h" 2
 
