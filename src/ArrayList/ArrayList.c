@@ -115,7 +115,7 @@ DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayLis
 	// ArrayListPosition* position;
 	// ArrayListPosition* base;
 	// ArrayListOffset offset;
-	ArrayListObject aux;
+	ArrayListValue aux;
 	ArrayListPosition j;
 	i = FIRST;
 	// base = BASE(Array.elements);
