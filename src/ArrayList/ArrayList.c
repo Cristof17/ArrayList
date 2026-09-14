@@ -14,42 +14,42 @@
  *      Author: cristoforrotsching
  */
 
-struct ArrayList ArrayListPerformCopy(struct ArrayList List, struct ArrayList Copy)
+DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct ArrayList To)
 {
 	struct ArrayList list;
 	return list;
 }
-ArrayListObject ArrayListPerformGetFirst(struct ArrayList List)
+DllExport ArrayListObject ArrayListPerformGetFirst(struct ArrayList Array)
 {
 	ArrayListObject first;
-	first = List.elements[FIRST];
+	first = Array.elements[FIRST];
 	return first;
 }
-ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
+DllExport ArrayListObject ArrayListPerformGetLast(struct ArrayList Array)
 {
 	ArrayListObject last;
-	last = List.elements[List.count];
+	last = Array.elements[Array.count];
 	return last;
 }
-ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListValue Object)
+DllExport ArrayListObject ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data)
 {
 	ArrayListObject last;
-	last = List.count;
-	ArrayListMoveElementsRight(List);
-	List.elements[FIRST] = Object;
+	last = Array.count;
+	ArrayListMoveElementsRight(Array);
+	Array.elements[FIRST] = Data;
 	// Array
 	ArrayListObject first;
-	first = List.elements[FIRST];
-	List.count++;
+	first = Array.elements[FIRST];
+	Array.count++;
 	return first;
 }
-ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
+DllExport ArrayListObject ArrayListRemoveFirst(struct ArrayList Array)
 {
 	ArrayListObject first;
-	List.elements[FIRST] = 0;
-	ArrayListMoveElementsLeft(List);
-	List.count--;
-	first = List.elements[FIRST];
+	Array.elements[FIRST] = 0;
+	ArrayListMoveElementsLeft(Array);
+	Array.count--;
+	first = Array.elements[FIRST];
 	return first;
 	// int i = FIRST;
 	// while (i <= List.count)
@@ -59,42 +59,42 @@ ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
 	// }
 	// List.count--;
 }
-ArrayListObject ArrayListRemoveLast(struct ArrayList List)
+DllExport ArrayListObject ArrayListRemoveLast(struct ArrayList Array)
 {
 	ArrayListObject last;
-	List.elements[List.count] = 0;
-	List.count--;
-	last = List.elements[List.count];
+	Array.elements[Array.count] = 0;
+	Array.count--;
+	last = Array.elements[Array.count];
 	return last;
 }
-ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
+DllExport ArrayListObject ArrayListMoveElementsLeft(struct ArrayList Array)
 {
 	ArrayListPosition i = FIRST;
 	ArrayListObject aux;
-	while (i <= List.count)
+	while (i <= Array.count)
 	{
-		aux = List.elements[i + 1];
-		List.elements[i] = aux;
+		aux = Array.elements[i + 1];
+		Array.elements[i] = aux;
 		i++;
 	}
-	return List.elements[FIRST];
+	return Array.elements[FIRST];
 }
-ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
+DllExport ArrayListObject ArrayListMoveElementsRight(struct ArrayList Array)
 {
-	ArrayListPosition i = List.count;
+	ArrayListPosition i = Array.count;
 	ArrayListObject aux;
 	while (i >= FIRST)
 	{
-		aux = List.elements[i];
-		List.elements[i + 1] = aux;
+		aux = Array.elements[i];
+		Array.elements[i + 1] = aux;
 		i--;
 	}
-	return List.elements[FIRST];
+	return Array.elements[FIRST];
 }
-ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Object)
+DllExport ArrayListObject ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data)
 {
 	// ArrayListObject
-	return Object;
+	return Data;
 }
 DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count)
 {
@@ -109,7 +109,7 @@ DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, Arr
 	}
 	return Array;
 }
-DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
+DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count)
 {
 	ArrayListPosition i;
 	ArrayListPosition j;
@@ -124,7 +124,7 @@ DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayLis
 	// i = &(Array.elements[FIRST]);
 	// Array.count = Count;
 	// i = FIRST;
-	aux = Value;
+	aux = Data;
 	// position = i;
 	// #pragma pack(push,8)
 	while (i <= Count)
@@ -165,26 +165,26 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 
 }
-HRESULT ArrayListPerformRuin(struct ArrayList List)
+DllExport HRESULT ArrayListPerformRuin(struct ArrayList PA)
 {
 	HRESULT result;
 	ArrayListPosition i = FIRST;
-	while (i <= List.count)
+	while (i <= PA.count)
 	{
-		List.elements[i] = 0;
+		PA.elements[i] = 0;
 		i++;
 	}
-	List.count = 0;
+	PA.count = 0;
 	result = HRESULT_SUCCESS;
 	return result;
 }
-HRESULT ArrayListPerformDelete(struct ArrayList List)
+DllExport HRESULT ArrayListPerformDelete(struct ArrayList PA)
 {
 	HRESULT result;
 	ArrayListPosition i = FIRST;
-	while (i <= List.count)
+	while (i <= PA.count)
 	{
-		List.elements[i] = 0;
+		PA.elements[i] = 0;
 		i++;
 	}
 	result = HRESULT_SUCCESS;

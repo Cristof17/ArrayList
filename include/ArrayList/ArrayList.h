@@ -5,7 +5,7 @@
 #include <defs.h>
 #include <types.h>
 
-DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList, ArrayListValue Data[], ArrayListCount Count);
+DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
 DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count);
 DllExport ArrayListObject ArrayListMoveElementsLeft(struct ArrayList Array);
 DllExport ArrayListObject ArrayListMoveElementsRight(struct ArrayList Array);
