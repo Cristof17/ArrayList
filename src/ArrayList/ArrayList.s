@@ -304,7 +304,7 @@ _ArrayListPerformInit:                  ; @ArrayListPerformInit
 	mov	x8, #1                          ; =0x1
 	str	x8, [sp, #32]
 	ldur	x8, [x29, #-16]
-	str	x8, [sp, #24]
+	str	x8, [sp, #16]
 	b	LBB10_1
 LBB10_1:                                ; =>This Inner Loop Header: Depth=1
 	ldr	x8, [sp, #32]
@@ -314,13 +314,13 @@ LBB10_1:                                ; =>This Inner Loop Header: Depth=1
 	b	LBB10_2
 LBB10_2:                                ;   in Loop: Header=BB10_1 Depth=1
 	ldr	x9, [sp, #8]                    ; 8-byte Folded Reload
-	ldr	x8, [sp, #24]
+	ldr	x8, [sp, #16]
 	ldr	x10, [sp, #32]
 	str	x8, [x9, x10, lsl #3]
 	ldr	x8, [sp, #32]
 	add	x8, x8, #1
-	str	x8, [sp, #16]
-	ldr	x8, [sp, #16]
+	str	x8, [sp, #24]
+	ldr	x8, [sp, #24]
 	str	x8, [sp, #32]
 	b	LBB10_1
 LBB10_3:

@@ -65,14 +65,14 @@ struct ArrayList {
 
 
 
-          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count);
+          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
           struct ArrayList ArrayListPerformInit(struct ArrayList, ArrayListValue Value, ArrayListCount Count);
           ArrayListObject ArrayListMoveElementsLeft(struct ArrayList);
           ArrayListObject ArrayListMoveElementsRight(struct ArrayList);
           ArrayListObject ArrayListPerformGetFirst(struct ArrayList);
           ArrayListObject ArrayListPerformGetLast(struct ArrayList);
-          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListObject);
-          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListObject);
+          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListValue);
+          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListValue);
           ArrayListObject ArrayListRemoveFirst(struct ArrayList);
           ArrayListObject ArrayListRemoveLast(struct ArrayList);
           struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
@@ -98,7 +98,7 @@ ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
  last = List.elements[List.count];
  return last;
 }
-ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListObject Object)
+ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListValue Object)
 {
  ArrayListObject last;
  last = List.count;
@@ -158,12 +158,12 @@ ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
  }
  return List.elements[(1)];
 }
-ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject Object)
+ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Object)
 {
 
  return Object;
 }
-          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count)
+          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count)
 {
  ArrayListPosition i = (1);
  ArrayListValue aux;
@@ -179,11 +179,11 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
           struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
 {
  ArrayListPosition i;
-
-
-
- ArrayListObject aux;
  ArrayListPosition j;
+ ArrayListValue aux;
+
+
+
  i = (1);
 
 

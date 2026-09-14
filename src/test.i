@@ -624,14 +624,14 @@ struct ArrayList {
 };
 # 7 "./include/ArrayList/ArrayList.h" 2
 
-          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count);
+          struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
           struct ArrayList ArrayListPerformInit(struct ArrayList, ArrayListValue Value, ArrayListCount Count);
           ArrayListObject ArrayListMoveElementsLeft(struct ArrayList);
           ArrayListObject ArrayListMoveElementsRight(struct ArrayList);
           ArrayListObject ArrayListPerformGetFirst(struct ArrayList);
           ArrayListObject ArrayListPerformGetLast(struct ArrayList);
-          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListObject);
-          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListObject);
+          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListValue);
+          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListValue);
           ArrayListObject ArrayListRemoveFirst(struct ArrayList);
           ArrayListObject ArrayListRemoveLast(struct ArrayList);
           struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
