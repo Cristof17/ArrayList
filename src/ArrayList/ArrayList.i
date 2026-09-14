@@ -8,8 +8,12 @@
 # 1 "./include/defs.h" 1
 # 2 "./src/ArrayList/ArrayList.c" 2
 # 1 "./include/types.h" 1
-# 12 "./include/types.h"
-typedef int ArrayListSize;
+# 13 "./include/types.h"
+typedef long ArrayListSize;
+
+
+
+
 
 typedef long ArrayListObject;
 
@@ -17,6 +21,8 @@ typedef long ArrayListObject;
 
 
 typedef long ArrayListPosition;
+typedef long ArrayListOffset;
+
 
 
 
@@ -32,17 +38,21 @@ typedef long ArrayListValue;
 
 
 
+
+
+#pragma pack(show)
 struct ArrayListPosition {
-#pragma pack(push, 8)
-#pragma pack(pop)
     ArrayListPosition position;
 };
+#pragma pack(show)
 struct ArrayList {
 
+    ArrayListObject elements[4];
     ArrayListPosition place;
+
     ArrayListCount count;
 
-    ArrayListObject elements[4];
+
 };
 # 3 "./src/ArrayList/ArrayList.c" 2
 
@@ -126,8 +136,8 @@ ArrayListObject ArrayListRemoveLast(struct ArrayList List)
 }
 ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 {
- int i = (1);
- int aux;
+ ArrayListPosition i = (1);
+ ArrayListObject aux;
  while (i <= List.count)
  {
   aux = List.elements[i + 1];
@@ -138,8 +148,8 @@ ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 }
 ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
 {
- int i = List.count;
- int aux;
+ ArrayListPosition i = List.count;
+ ArrayListObject aux;
  while (i >= (1))
  {
   aux = List.elements[i];
@@ -155,8 +165,8 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 }
           struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count)
 {
- int i = (1);
- int aux;
+ ArrayListPosition i = (1);
+ ArrayListValue aux;
  Array.count = Count;
  while (i <= Count)
  {
@@ -168,16 +178,36 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 }
           struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
 {
- ArrayListPosition i = (1);
+ ArrayListPosition i;
 
- int aux = Value;
- int position;
+
+
+ ArrayListObject aux;
+ ArrayListPosition j;
+ i = (1);
+
+
+
+
+
+
+ aux = Value;
+
 
  while (i <= Count)
  {
-  position = i-1;
-  Array.elements[position] = aux;
-  i++;
+  Array.elements[i] = aux;
+
+
+
+
+
+
+  j = i + 1;
+  i = j;
+
+
+
  }
  return Array;
 }
@@ -186,7 +216,7 @@ ArrayListObject ArrayListGet(struct ArrayListPosition Position)
  ArrayListObject object;
  return object;
 }
-# 144 "./src/ArrayList/ArrayList.c"
+# 164 "./src/ArrayList/ArrayList.c"
 void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 
@@ -194,7 +224,7 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 int ArrayListPerformRuin(struct ArrayList List)
 {
  int result;
- int i = (1);
+ ArrayListPosition i = (1);
  while (i <= List.count)
  {
   List.elements[i] = 0;
@@ -207,7 +237,7 @@ int ArrayListPerformRuin(struct ArrayList List)
 int ArrayListPerformDelete(struct ArrayList List)
 {
  int result;
- int i = (1);
+ ArrayListPosition i = (1);
  while (i <= List.count)
  {
   List.elements[i] = 0;

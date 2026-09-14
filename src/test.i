@@ -576,8 +576,12 @@ extern int __vsprintf_chk (char * restrict , int, size_t,
 # 1 "./include/defs.h" 1
 # 6 "./include/ArrayList/ArrayList.h" 2
 # 1 "./include/types.h" 1
-# 12 "./include/types.h"
-typedef int ArrayListSize;
+# 13 "./include/types.h"
+typedef long ArrayListSize;
+
+
+
+
 
 typedef long ArrayListObject;
 
@@ -585,6 +589,8 @@ typedef long ArrayListObject;
 
 
 typedef long ArrayListPosition;
+typedef long ArrayListOffset;
+
 
 
 
@@ -600,17 +606,21 @@ typedef long ArrayListValue;
 
 
 
+
+
+#pragma pack(show)
 struct ArrayListPosition {
-#pragma pack(push, 8)
-#pragma pack(pop)
     ArrayListPosition position;
 };
+#pragma pack(show)
 struct ArrayList {
 
+    ArrayListObject elements[4];
     ArrayListPosition place;
+
     ArrayListCount count;
 
-    ArrayListObject elements[4];
+
 };
 # 7 "./include/ArrayList/ArrayList.h" 2
 
@@ -630,12 +640,17 @@ struct ArrayList {
           int ArrayListPerformDelete(struct ArrayList Array);
 # 6 "test/test.c" 2
 
+
 int main()
 {
  struct ArrayList List;
- List = ArrayListPerformConstruct(List, (int[]){ 1, 2 }, 2);
 
- int i = (1);
+ List = ArrayListPerformConstruct(List, (long[]){ 1, 2 }, 2);
+
+
+
+
+ ArrayListPosition i = (1);
  while (i <= List.count){
 
   printf("%ld\n", List.elements[i]);
@@ -644,7 +659,7 @@ int main()
 
   i++;
  }
- List = ArrayListPerformInit(List, 5, 4);
+ List = ArrayListPerformInit(List, 5, 2);
  i = (1);
  while (i <= List.count){
 

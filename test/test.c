@@ -4,12 +4,17 @@
 #include <stdio.h>
 #include <ArrayList/ArrayList.h>
 #include <types.h>
+
 int main()
 {
 	struct ArrayList List;
+#ifdef _64BIT
+	List = ArrayListPerformConstruct(List, (long[]){ 1, 2 }, 2);
+#else
 	List = ArrayListPerformConstruct(List, (int[]){ 1, 2 }, 2);
+#endif
 	// ArrayListPerformPrint(List);
-	int i = FIRST;
+	ArrayListPosition i = FIRST;
 	while (i <= List.count){
 #ifdef _64BIT
 		printf("%ld\n", List.elements[i]);
@@ -18,7 +23,7 @@ int main()
 #endif
 		i++;
 	}
-	List = ArrayListPerformInit(List, 5, 4);
+	List = ArrayListPerformInit(List, 5, 2);
 	i = FIRST;
 	while (i <= List.count){
 #ifdef _64BIT

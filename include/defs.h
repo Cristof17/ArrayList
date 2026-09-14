@@ -2,6 +2,13 @@
 #define INCLUDE_DEFS_H_ 1
 // #include <types.h>
 
+#ifndef _64BIT
+#define BASE(array) ((int*) &(array[0]))
+#define OFFSET(i,type) ((int) (i * sizeof(type)))
+#else
+#define BASE(array) ((long*) &(array[0]))
+#define OFFSET(i,type) ((long) (i * sizeof(type)))
+#endif
 #define PADataDefault { {} , {} }
 #define HRESULT_SUCCESS ((int)0)
 #define HRESULT_FAIL ((int)1)

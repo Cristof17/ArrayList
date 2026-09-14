@@ -69,8 +69,8 @@ ArrayListObject ArrayListRemoveLast(struct ArrayList List)
 }
 ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 {
-	int i = FIRST;
-	int aux;
+	ArrayListPosition i = FIRST;
+	ArrayListObject aux;
 	while (i <= List.count)
 	{
 		aux = List.elements[i + 1];
@@ -81,8 +81,8 @@ ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
 }
 ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
 {
-	int i = List.count;
-	int aux;
+	ArrayListPosition i = List.count;
+	ArrayListObject aux;
 	while (i >= FIRST)
 	{
 		aux = List.elements[i];
@@ -98,8 +98,8 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 }
 DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count)
 {
-	int i = FIRST;
-	int aux;
+	ArrayListPosition i = FIRST;
+	ArrayListValue aux;
 	Array.count = Count;
 	while (i <= Count)
 	{
@@ -111,16 +111,36 @@ DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, Arr
 }
 DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
 {
-	ArrayListPosition i = FIRST;
-
-	int aux = Value;
-	int position;
+	ArrayListPosition i;
+	// ArrayListPosition* position;
+	// ArrayListPosition* base;
+	// ArrayListOffset offset;
+	ArrayListObject aux;
+	ArrayListPosition j;
+	i = FIRST;
+	// base = BASE(Array.elements);
+	// offset = OFFSET(i,ArrayListObject);
+	// position = base + offset;
+	// i = &(Array.elements[FIRST]);
 	// Array.count = Count;
+	// i = FIRST;
+	aux = Value;
+	// position = i;
+	// #pragma pack(push,8)
 	while (i <= Count)
 	{
-		position = i-1;
-		Array.elements[position] = aux;
-		i++;
+		Array.elements[i] = aux;
+		// position = i-1;
+		// *position = aux;
+		// #pragma pack(pop)
+		// position = base + offset;
+		// *position = aux;
+		// Array.elements[i] = aux;
+		j = i + 1;
+		i = j;
+		// base = BASE(Array.elements);
+		// offset = OFFSET(i,ArrayListObject);
+		// position = base + offset;
 	}
 	return Array;
 }
@@ -148,7 +168,7 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 HRESULT ArrayListPerformRuin(struct ArrayList List)
 {
 	HRESULT result;
-	int i = FIRST;
+	ArrayListPosition i = FIRST;
 	while (i <= List.count)
 	{
 		List.elements[i] = 0;
@@ -161,7 +181,7 @@ HRESULT ArrayListPerformRuin(struct ArrayList List)
 HRESULT ArrayListPerformDelete(struct ArrayList List)
 {
 	HRESULT result;
-	int i = FIRST;
+	ArrayListPosition i = FIRST;
 	while (i <= List.count)
 	{
 		List.elements[i] = 0;

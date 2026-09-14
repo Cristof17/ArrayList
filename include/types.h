@@ -9,7 +9,12 @@ typedef int ArrayListObject;
 #else
 #endif
 
+#ifdef _64BIT
+typedef long ArrayListSize;
+#else
 typedef int ArrayListSize;
+#endif 
+// typedef int ArrayListSize;
 #ifdef _64BIT
 typedef long ArrayListObject;
 #else
@@ -17,7 +22,9 @@ typedef int ArrayListObject;
 #endif
 #ifdef _64BIT
 typedef long ArrayListPosition;
+typedef long ArrayListOffset;
 #else
+typedef long ArrayListOffset;
 typedef int ArrayListPosition;
 #endif
 #ifdef _64BIT
@@ -31,18 +38,22 @@ typedef long ArrayListValue;
 typedef int ArrayListValue;
 #endif
 //#
+// #pragma pack(push, 8)
+// #pragma pack(push, 8)
 
+#pragma pack(show)
 struct ArrayListPosition {
-    #pragma pack(push, 8)
-    #pragma pack(pop)
     ArrayListPosition position;
 };
+#pragma pack(show)
 struct ArrayList {
     // struct Position position;
-    ArrayListPosition place;
-    ArrayListCount count;
-    // long count;
     ArrayListObject elements[SIZE];
+    ArrayListPosition place;
+    // #pragma pack(8)
+    ArrayListCount count;
+    // #pragma pack(8)
+    // long count;
 };
 
 #endif

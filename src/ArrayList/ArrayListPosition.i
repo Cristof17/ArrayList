@@ -11,8 +11,12 @@
 # 1 "./include/defs.h" 1
 # 12 "./include/ArrayList/ArrayListPosition.h" 2
 # 1 "./include/types.h" 1
-# 12 "./include/types.h"
-typedef int ArrayListSize;
+# 13 "./include/types.h"
+typedef long ArrayListSize;
+
+
+
+
 
 typedef long ArrayListObject;
 
@@ -20,6 +24,8 @@ typedef long ArrayListObject;
 
 
 typedef long ArrayListPosition;
+typedef long ArrayListOffset;
+
 
 
 
@@ -35,17 +41,21 @@ typedef long ArrayListValue;
 
 
 
+
+
+#pragma pack(show)
 struct ArrayListPosition {
-#pragma pack(push, 8)
-#pragma pack(pop)
     ArrayListPosition position;
 };
+#pragma pack(show)
 struct ArrayList {
 
+    ArrayListObject elements[4];
     ArrayListPosition place;
+
     ArrayListCount count;
 
-    ArrayListObject elements[4];
+
 };
 # 13 "./include/ArrayList/ArrayListPosition.h" 2
 
