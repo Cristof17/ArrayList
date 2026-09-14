@@ -96,7 +96,7 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject O
 	// ArrayListObject
 	return Object;
 }
-DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListObject Data[], ArrayListCount Count)
+DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count)
 {
 	ArrayListPosition i = FIRST;
 	ArrayListValue aux;
