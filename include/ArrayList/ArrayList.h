@@ -7,14 +7,14 @@
 
 DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
 DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count);
-DllExport ArrayListObject ArrayListMoveElementsLeft(struct ArrayList Array);
-DllExport ArrayListObject ArrayListMoveElementsRight(struct ArrayList Array);
-DllExport ArrayListObject ArrayListPerformGetFirst(struct ArrayList Array);
-DllExport ArrayListObject ArrayListPerformGetLast(struct ArrayList Array);
-DllExport ArrayListObject ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data);
-DllExport ArrayListObject ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data);
-DllExport ArrayListObject ArrayListRemoveFirst(struct ArrayList Array);
-DllExport ArrayListObject ArrayListRemoveLast(struct ArrayList Array);
+DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array);
+DllExport ArrayListValue ArrayListMoveElementsRight(struct ArrayList Array);
+DllExport ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array);
+DllExport ArrayListValue ArrayListPerformGetLast(struct ArrayList Array);
+DllExport ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data);
+DllExport ArrayListValue ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data);
+DllExport ArrayListValue ArrayListRemoveFirst(struct ArrayList Array);
+DllExport ArrayListValue ArrayListRemoveLast(struct ArrayList Array);
 DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct ArrayList To);
 DllExport ArrayListSize ArrayListPerformSize(struct ArrayList Array);
 DllExport HRESULT ArrayListPerformRuin(struct ArrayList PA);

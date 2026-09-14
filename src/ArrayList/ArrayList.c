@@ -19,33 +19,33 @@ DllExport struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct Ar
 	struct ArrayList list;
 	return list;
 }
-DllExport ArrayListObject ArrayListPerformGetFirst(struct ArrayList Array)
+DllExport ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array)
 {
-	ArrayListObject first;
+	ArrayListValue first;
 	first = Array.elements[FIRST];
 	return first;
 }
-DllExport ArrayListObject ArrayListPerformGetLast(struct ArrayList Array)
+DllExport ArrayListValue ArrayListPerformGetLast(struct ArrayList Array)
 {
-	ArrayListObject last;
+	ArrayListValue last;
 	last = Array.elements[Array.count];
 	return last;
 }
-DllExport ArrayListObject ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data)
+DllExport ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data)
 {
-	ArrayListObject last;
+	ArrayListValue last;
 	last = Array.count;
 	ArrayListMoveElementsRight(Array);
 	Array.elements[FIRST] = Data;
 	// Array
-	ArrayListObject first;
+	ArrayListValue first;
 	first = Array.elements[FIRST];
 	Array.count++;
 	return first;
 }
-DllExport ArrayListObject ArrayListRemoveFirst(struct ArrayList Array)
+DllExport ArrayListValue ArrayListRemoveFirst(struct ArrayList Array)
 {
-	ArrayListObject first;
+	ArrayListValue first;
 	Array.elements[FIRST] = 0;
 	ArrayListMoveElementsLeft(Array);
 	Array.count--;
@@ -59,15 +59,15 @@ DllExport ArrayListObject ArrayListRemoveFirst(struct ArrayList Array)
 	// }
 	// List.count--;
 }
-DllExport ArrayListObject ArrayListRemoveLast(struct ArrayList Array)
+DllExport ArrayListValue ArrayListRemoveLast(struct ArrayList Array)
 {
-	ArrayListObject last;
+	ArrayListValue last;
 	Array.elements[Array.count] = 0;
 	Array.count--;
 	last = Array.elements[Array.count];
 	return last;
 }
-DllExport ArrayListObject ArrayListMoveElementsLeft(struct ArrayList Array)
+DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array)
 {
 	ArrayListPosition i = FIRST;
 	ArrayListObject aux;
@@ -79,10 +79,10 @@ DllExport ArrayListObject ArrayListMoveElementsLeft(struct ArrayList Array)
 	}
 	return Array.elements[FIRST];
 }
-DllExport ArrayListObject ArrayListMoveElementsRight(struct ArrayList Array)
+DllExport ArrayListValue ArrayListMoveElementsRight(struct ArrayList Array)
 {
 	ArrayListPosition i = Array.count;
-	ArrayListObject aux;
+	ArrayListValue aux;
 	while (i >= FIRST)
 	{
 		aux = Array.elements[i];
@@ -91,7 +91,7 @@ DllExport ArrayListObject ArrayListMoveElementsRight(struct ArrayList Array)
 	}
 	return Array.elements[FIRST];
 }
-DllExport ArrayListObject ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data)
+DllExport ArrayListValue ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data)
 {
 	// ArrayListObject
 	return Data;
