@@ -70,7 +70,7 @@ _ArrayListPerformPutFirst:              ; @ArrayListPerformPutFirst
 	mov	x2, #48                         ; =0x30
 	bl	_memcpy
 	ldr	x0, [sp]                        ; 8-byte Folded Reload
-	bl	_ArrayListMoveElementsRight
+	bl	_ArrayListMoveComponentsRight
 	ldr	x0, [sp, #8]                    ; 8-byte Folded Reload
 	ldur	x8, [x29, #-16]
 	str	x8, [x0, #8]
@@ -85,9 +85,9 @@ _ArrayListPerformPutFirst:              ; @ArrayListPerformPutFirst
 	ret
 	.cfi_endproc
                                         ; -- End function
-	.globl	_ArrayListMoveElementsRight     ; -- Begin function ArrayListMoveElementsRight
+	.globl	_ArrayListMoveComponentsRight   ; -- Begin function ArrayListMoveComponentsRight
 	.p2align	2
-_ArrayListMoveElementsRight:            ; @ArrayListMoveElementsRight
+_ArrayListMoveComponentsRight:          ; @ArrayListMoveComponentsRight
 	.cfi_startproc
 ; %bb.0:
 	sub	sp, sp, #32
@@ -144,7 +144,7 @@ _ArrayListRemoveFirst:                  ; @ArrayListRemoveFirst
 	mov	x2, #48                         ; =0x30
 	bl	_memcpy
 	ldr	x0, [sp]                        ; 8-byte Folded Reload
-	bl	_ArrayListMoveElementsLeft
+	bl	_ArrayListMoveComponentsLeft
 	ldr	x0, [sp, #8]                    ; 8-byte Folded Reload
 	ldr	x8, [x0, #40]
 	subs	x8, x8, #1
@@ -157,9 +157,9 @@ _ArrayListRemoveFirst:                  ; @ArrayListRemoveFirst
 	ret
 	.cfi_endproc
                                         ; -- End function
-	.globl	_ArrayListMoveElementsLeft      ; -- Begin function ArrayListMoveElementsLeft
+	.globl	_ArrayListMoveComponentsLeft    ; -- Begin function ArrayListMoveComponentsLeft
 	.p2align	2
-_ArrayListMoveElementsLeft:             ; @ArrayListMoveElementsLeft
+_ArrayListMoveComponentsLeft:           ; @ArrayListMoveComponentsLeft
 	.cfi_startproc
 ; %bb.0:
 	sub	sp, sp, #32

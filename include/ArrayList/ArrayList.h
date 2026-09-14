@@ -7,8 +7,8 @@
 
 DllExport struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
 DllExport struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count);
-DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array);
-DllExport ArrayListValue ArrayListMoveElementsRight(struct ArrayList Array);
+DllExport ArrayListValue ArrayListMoveComponentsLeft(struct ArrayList Array);
+DllExport ArrayListValue ArrayListMoveComponentsRight(struct ArrayList Array);
 DllExport ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array);
 DllExport ArrayListValue ArrayListPerformGetLast(struct ArrayList Array);
 DllExport ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data);

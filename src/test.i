@@ -625,19 +625,19 @@ struct ArrayList {
 # 7 "./include/ArrayList/ArrayList.h" 2
 
           struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
-          struct ArrayList ArrayListPerformInit(struct ArrayList, ArrayListValue Value, ArrayListCount Count);
-          ArrayListObject ArrayListMoveElementsLeft(struct ArrayList);
-          ArrayListObject ArrayListMoveElementsRight(struct ArrayList);
-          ArrayListObject ArrayListPerformGetFirst(struct ArrayList);
-          ArrayListObject ArrayListPerformGetLast(struct ArrayList);
-          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListValue);
-          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListValue);
-          ArrayListObject ArrayListRemoveFirst(struct ArrayList);
-          ArrayListObject ArrayListRemoveLast(struct ArrayList);
-          struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
-          ArrayListSize ArrayListPerformSize();
-          int ArrayListPerformRuin(struct ArrayList Array);
-          int ArrayListPerformDelete(struct ArrayList Array);
+          struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count);
+          ArrayListValue ArrayListMoveComponentsLeft(struct ArrayList Array);
+          ArrayListValue ArrayListMoveComponentsRight(struct ArrayList Array);
+          ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array);
+          ArrayListValue ArrayListPerformGetLast(struct ArrayList Array);
+          ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data);
+          ArrayListValue ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data);
+          ArrayListValue ArrayListRemoveFirst(struct ArrayList Array);
+          ArrayListValue ArrayListRemoveLast(struct ArrayList Array);
+          struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct ArrayList To);
+          ArrayListSize ArrayListPerformSize(struct ArrayList Array);
+          int ArrayListPerformRuin(struct ArrayList PA);
+          int ArrayListPerformDelete(struct ArrayList PA);
 # 6 "test/test.c" 2
 
 

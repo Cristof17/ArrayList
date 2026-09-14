@@ -66,57 +66,57 @@ struct ArrayList {
 
 
           struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count);
-          struct ArrayList ArrayListPerformInit(struct ArrayList, ArrayListValue Value, ArrayListCount Count);
-          ArrayListObject ArrayListMoveElementsLeft(struct ArrayList);
-          ArrayListObject ArrayListMoveElementsRight(struct ArrayList);
-          ArrayListObject ArrayListPerformGetFirst(struct ArrayList);
-          ArrayListObject ArrayListPerformGetLast(struct ArrayList);
-          ArrayListObject ArrayListPerformPutFirst(struct ArrayList, ArrayListValue);
-          ArrayListObject ArrayListPerformPutLast(struct ArrayList, ArrayListValue);
-          ArrayListObject ArrayListRemoveFirst(struct ArrayList);
-          ArrayListObject ArrayListRemoveLast(struct ArrayList);
-          struct ArrayList ArrayListPerformCopy(struct ArrayList, struct ArrayList);
-          ArrayListSize ArrayListPerformSize();
-          int ArrayListPerformRuin(struct ArrayList Array);
-          int ArrayListPerformDelete(struct ArrayList Array);
+          struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count);
+          ArrayListValue ArrayListMoveComponentsLeft(struct ArrayList Array);
+          ArrayListValue ArrayListMoveComponentsRight(struct ArrayList Array);
+          ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array);
+          ArrayListValue ArrayListPerformGetLast(struct ArrayList Array);
+          ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data);
+          ArrayListValue ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data);
+          ArrayListValue ArrayListRemoveFirst(struct ArrayList Array);
+          ArrayListValue ArrayListRemoveLast(struct ArrayList Array);
+          struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct ArrayList To);
+          ArrayListSize ArrayListPerformSize(struct ArrayList Array);
+          int ArrayListPerformRuin(struct ArrayList PA);
+          int ArrayListPerformDelete(struct ArrayList PA);
 # 6 "./src/ArrayList/ArrayList.c" 2
 # 17 "./src/ArrayList/ArrayList.c"
-struct ArrayList ArrayListPerformCopy(struct ArrayList List, struct ArrayList Copy)
+          struct ArrayList ArrayListPerformCopy(struct ArrayList From, struct ArrayList To)
 {
  struct ArrayList list;
  return list;
 }
-ArrayListObject ArrayListPerformGetFirst(struct ArrayList List)
+          ArrayListValue ArrayListPerformGetFirst(struct ArrayList Array)
 {
- ArrayListObject first;
- first = List.elements[(1)];
+ ArrayListValue first;
+ first = Array.elements[(1)];
  return first;
 }
-ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
+          ArrayListValue ArrayListPerformGetLast(struct ArrayList Array)
 {
- ArrayListObject last;
- last = List.elements[List.count];
+ ArrayListValue last;
+ last = Array.elements[Array.count];
  return last;
 }
-ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListValue Object)
+          ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayListValue Data)
 {
- ArrayListObject last;
- last = List.count;
- ArrayListMoveElementsRight(List);
- List.elements[(1)] = Object;
+ ArrayListValue last;
+ last = Array.count;
+ ArrayListMoveComponentsRight(Array);
+ Array.elements[(1)] = Data;
 
- ArrayListObject first;
- first = List.elements[(1)];
- List.count++;
+ ArrayListValue first;
+ first = Array.elements[(1)];
+ Array.count++;
  return first;
 }
-ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
+          ArrayListValue ArrayListRemoveFirst(struct ArrayList Array)
 {
- ArrayListObject first;
- List.elements[(1)] = 0;
- ArrayListMoveElementsLeft(List);
- List.count--;
- first = List.elements[(1)];
+ ArrayListValue first;
+ Array.elements[(1)] = 0;
+ ArrayListMoveComponentsLeft(Array);
+ Array.count--;
+ first = Array.elements[(1)];
  return first;
 
 
@@ -126,42 +126,42 @@ ArrayListObject ArrayListRemoveFirst(struct ArrayList List)
 
 
 }
-ArrayListObject ArrayListRemoveLast(struct ArrayList List)
+          ArrayListValue ArrayListRemoveLast(struct ArrayList Array)
 {
- ArrayListObject last;
- List.elements[List.count] = 0;
- List.count--;
- last = List.elements[List.count];
+ ArrayListValue last;
+ Array.elements[Array.count] = 0;
+ Array.count--;
+ last = Array.elements[Array.count];
  return last;
 }
-ArrayListObject ArrayListMoveElementsLeft(struct ArrayList List)
+          ArrayListValue ArrayListMoveComponentsLeft(struct ArrayList Array)
 {
  ArrayListPosition i = (1);
- ArrayListObject aux;
- while (i <= List.count)
+ ArrayListValue aux;
+ while (i <= Array.count)
  {
-  aux = List.elements[i + 1];
-  List.elements[i] = aux;
+  aux = Array.elements[i + 1];
+  Array.elements[i] = aux;
   i++;
  }
- return List.elements[(1)];
+ return Array.elements[(1)];
 }
-ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
+          ArrayListValue ArrayListMoveComponentsRight(struct ArrayList Array)
 {
- ArrayListPosition i = List.count;
- ArrayListObject aux;
+ ArrayListPosition i = Array.count;
+ ArrayListValue aux;
  while (i >= (1))
  {
-  aux = List.elements[i];
-  List.elements[i + 1] = aux;
+  aux = Array.elements[i];
+  Array.elements[i + 1] = aux;
   i--;
  }
- return List.elements[(1)];
+ return Array.elements[(1)];
 }
-ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Object)
+          ArrayListValue ArrayListPerformPutLast(struct ArrayList Array, ArrayListValue Data)
 {
 
- return Object;
+ return Data;
 }
           struct ArrayList ArrayListPerformConstruct(struct ArrayList Array, ArrayListValue Data[], ArrayListCount Count)
 {
@@ -176,7 +176,7 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Ob
  }
  return Array;
 }
-          struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Value, ArrayListCount Count)
+          struct ArrayList ArrayListPerformInit(struct ArrayList Array, ArrayListValue Data, ArrayListCount Count)
 {
  ArrayListPosition i;
  ArrayListPosition j;
@@ -191,7 +191,7 @@ ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Ob
 
 
 
- aux = Value;
+ aux = Data;
 
 
  while (i <= Count)
@@ -221,26 +221,26 @@ void ArrayListPut(struct ArrayListPosition Position, ArrayListObject ListObject)
 {
 
 }
-int ArrayListPerformRuin(struct ArrayList List)
+          int ArrayListPerformRuin(struct ArrayList PA)
 {
  int result;
  ArrayListPosition i = (1);
- while (i <= List.count)
+ while (i <= PA.count)
  {
-  List.elements[i] = 0;
+  PA.elements[i] = 0;
   i++;
  }
- List.count = 0;
+ PA.count = 0;
  result = ((int)0);
  return result;
 }
-int ArrayListPerformDelete(struct ArrayList List)
+          int ArrayListPerformDelete(struct ArrayList PA)
 {
  int result;
  ArrayListPosition i = (1);
- while (i <= List.count)
+ while (i <= PA.count)
  {
-  List.elements[i] = 0;
+  PA.elements[i] = 0;
   i++;
  }
  result = ((int)0);

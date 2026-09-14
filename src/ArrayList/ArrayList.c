@@ -35,7 +35,7 @@ DllExport ArrayListValue ArrayListPerformPutFirst(struct ArrayList Array, ArrayL
 {
 	ArrayListValue last;
 	last = Array.count;
-	ArrayListMoveElementsRight(Array);
+	ArrayListMoveComponentsRight(Array);
 	Array.elements[FIRST] = Data;
 	// Array
 	ArrayListValue first;
@@ -47,7 +47,7 @@ DllExport ArrayListValue ArrayListRemoveFirst(struct ArrayList Array)
 {
 	ArrayListValue first;
 	Array.elements[FIRST] = 0;
-	ArrayListMoveElementsLeft(Array);
+	ArrayListMoveComponentsLeft(Array);
 	Array.count--;
 	first = Array.elements[FIRST];
 	return first;
@@ -67,7 +67,7 @@ DllExport ArrayListValue ArrayListRemoveLast(struct ArrayList Array)
 	last = Array.elements[Array.count];
 	return last;
 }
-DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array)
+DllExport ArrayListValue ArrayListMoveComponentsLeft(struct ArrayList Array)
 {
 	ArrayListPosition i = FIRST;
 	ArrayListValue aux;
@@ -79,7 +79,7 @@ DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array)
 	}
 	return Array.elements[FIRST];
 }
-DllExport ArrayListValue ArrayListMoveElementsRight(struct ArrayList Array)
+DllExport ArrayListValue ArrayListMoveComponentsRight(struct ArrayList Array)
 {
 	ArrayListPosition i = Array.count;
 	ArrayListValue aux;
