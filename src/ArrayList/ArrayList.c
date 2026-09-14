@@ -70,7 +70,7 @@ DllExport ArrayListValue ArrayListRemoveLast(struct ArrayList Array)
 DllExport ArrayListValue ArrayListMoveElementsLeft(struct ArrayList Array)
 {
 	ArrayListPosition i = FIRST;
-	ArrayListObject aux;
+	ArrayListValue aux;
 	while (i <= Array.count)
 	{
 		aux = Array.elements[i + 1];
