@@ -31,7 +31,7 @@ ArrayListObject ArrayListPerformGetLast(struct ArrayList List)
 	last = List.elements[List.count];
 	return last;
 }
-ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListObject Object)
+ArrayListObject ArrayListPerformPutFirst(struct ArrayList List, ArrayListValue Object)
 {
 	ArrayListObject last;
 	last = List.count;
@@ -91,7 +91,7 @@ ArrayListObject ArrayListMoveElementsRight(struct ArrayList List)
 	}
 	return List.elements[FIRST];
 }
-ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListObject Object)
+ArrayListObject ArrayListPerformPutLast(struct ArrayList List, ArrayListValue Object)
 {
 	// ArrayListObject
 	return Object;
